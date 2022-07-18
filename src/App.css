@@ -36,3 +36,51 @@
     transform: rotate(360deg);
   }
 }
+
+.container{
+  height: 485px;
+  min-width: 525px;
+  max-width: 50%;
+  justify-content: center;
+  background-color: #F0EBE3;
+  margin: 10px;
+  overflow: scroll;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+.msg{
+  border: 1px solid gray;
+  min-height: 50px;
+  
+  margin: 20px;
+  padding: 5px 15px 5px 15px;
+  min-width: 225px;
+  border-radius: 12px;
+}
+.send{
+  float: right;
+  clear: both;
+  border-radius: 6px;
+  background-color: #3F4E4F;
+  color: white;
+}
+.receive{
+  float: left;
+  clear: both;
+  border-radius: 6px;
+
+  background-color: blue;
+}
+
+.messageInput{
+  padding: 10px;
+  border-radius: 4px;
+  width: 70%;
+
+}
+.sendBtn{
+  cursor:pointer;
+  border:2px solid black;
+  border-radius: 4px;
+  width: 20%;
+  padding: 10px;
+}
