@@ -15,11 +15,7 @@ function App() {
     
       <BrowserRouter>
         <Routes>
-          <Route exact path="/" element = {
-              (sessionStorage.getItem("Username"))?<Homepage/>:<Navigate to={"/authentication"}/>
-              }/>
-
-          <Route exact path="/authentication" element = {<Register/>}/>
+          <Route exact path="/" element = {<Homepage/>}/>
         </Routes>
 
       </BrowserRouter>

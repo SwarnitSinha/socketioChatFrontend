@@ -12,6 +12,8 @@
     background-color: #F0EBE3;
     margin: 10px;
     overflow: scroll;
+    position: relative;
+    bottom: 0;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   }
   .msg{
@@ -22,12 +24,14 @@
     padding: 5px 15px 5px 15px;
     min-width: 225px;
     border-radius: 12px;
+    display: flex;
+    flex-direction: column-reverse;
   }
   .send{
     float: right;
     clear: both;
     border-radius: 6px;
-    background-color: #3F4E4F;
+    background-color: blue;
     color: white;
   }
   .receive{
@@ -35,19 +39,36 @@
     clear: both;
     border-radius: 6px;
   
-    background-color: blue;
+    background-color: #3F4E4F;
   }
   
+  .msgForm{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 50%;
+  }
+
   .messageInput{
-    padding: 10px;
-    border-radius: 4px;
-    width: 70%;
-  
+    padding: 5px 20px;
+    border-radius: 5px;
+    border:none;
+    outline: none;
+
+    /* width: 70%; */
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 20px;
+    flex: 1;
   }
   .sendBtn{
-    cursor:pointer;
-    border:2px solid black;
-    border-radius: 4px;
-    width: 20%;
-    padding: 10px;
+   
+    padding: 5px 20px;
+    border-radius: 5px;
+    border:none;
+    outline: none;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 20px;
+    width: 90px;
+    margin-left: 5px;
+
   }
