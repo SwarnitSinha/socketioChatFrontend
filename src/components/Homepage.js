@@ -36,9 +36,10 @@ export default function Homepage() {
         const myUser = JSON.parse(sessionStorage.getItem("Username"));
         if (myUser) {
             setUser(myUser);
+            //emit joining message
         }
         console.log(myUser);
-    });
+    },[]);
 
     function updateScroll(){
         var element = document.getElementsByClassName(".container");
@@ -59,7 +60,7 @@ export default function Homepage() {
                     {chat.map((payload, index) => {
                         let varibaleClass = "send";
                         console.log(payload);
-                        if (payload.user == user) { 
+                        if (payload.user === user) { 
                             varibaleClass = "send";
                         } else {
                             varibaleClass = "receive";
@@ -67,10 +68,10 @@ export default function Homepage() {
                         // console.log(JSON.parse(userName));
                         return (
                             <>
-                                {payload.username==user?"":
+                                {payload.username===user?"":
                                     <p key={index} className={varibaleClass} msg>
                                         <span className="name">{payload.user}</span>: 
-                                    {payload.username==user?"":payload.message }
+                                    {payload.username===user?"":payload.message }
                                 </p>}
                             </>
                         );

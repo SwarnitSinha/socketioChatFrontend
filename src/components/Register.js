@@ -1,15 +1,15 @@
 import React from 'react'
 import {useState} from 'react';
-import {Link} from 'react-router-dom';
+// import {Link} from 'react-router-dom';
 import './Register.css'
-import io from "socket.io-client";
-import { useNavigate } from 'react-router-dom';
+// import io from "socket.io-client";
+// import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 // import firebase from '../firebase';
 
 
 
-const socket = io.connect("http://localhost:5000");
+// const socket = io.connect("http://localhost:5000");
 
 function Register({user,setUser}) {
 
@@ -18,19 +18,7 @@ function Register({user,setUser}) {
 	const [password,setPassword] = useState("");
 	const [login,setLogin] = useState(true);
 
-    const Navigate = useNavigate();
-
-    const saveUser = (e)=>{	
-		
-        e.preventDefault();
-        sessionStorage.setItem("Username", JSON.stringify(userName));
-        socket.emit("new-user-joined",{userName});
-        setUser(userName);
-        setUsername("");
-        Navigate('/');
-    }
-
-	
+    // const Navigate = useNavigate();
 
 	const logHandler = async(e)=>{
 		e.preventDefault();
@@ -59,7 +47,7 @@ function Register({user,setUser}) {
 				alert(result.data.message);
 			}
 			else{
-				alert("You have successfully registerd. Now Sign In and verify email")
+				alert(result.data.message)
 				setLogin(true);
 			}
 		}
