@@ -11,7 +11,7 @@ export default function Homepage() {
     const [user, setUser] = useState(null);
     const [message, setMessage] = useState("");
     const [chat, setChat] = useState([]); //we will put value to the array
-    const [onlineUser,setOnlineUser] = useState(0);
+
     
     const sendChat = (e) => {
         e.preventDefault();
@@ -54,8 +54,7 @@ export default function Homepage() {
         <div className="App">
             <header className="App-header">
                 <span>{user}</span>
-                <h1>Let's talk</h1>
-                <div>Current Online User: {onlineUser}</div>
+                <h1>Let's talk  </h1>
                 <div class="container">
                     {chat.map((payload, index) => {
                         let varibaleClass = "send";
