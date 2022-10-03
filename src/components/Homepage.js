@@ -53,8 +53,12 @@ export default function Homepage() {
     return (
         <div className="App">
             <header className="App-header">
-                <span>{user}</span>
-                <h1>Let's talk  </h1>
+                <div className = "header">
+                    <span>{user.toUpperCase()}</span>
+                    <h1>Let's talk  </h1>
+
+                </div>
+        
                 <div class="container">
                     {chat.map((payload, index) => {
                         let varibaleClass = "send";
@@ -69,7 +73,7 @@ export default function Homepage() {
                             <>
                                 {payload.username===user?"":
                                     <p key={index} className={varibaleClass} msg>
-                                        <span className="name">{payload.user}</span>: 
+                                        <span className="name">{payload.user}</span> 
                                     {payload.username===user?"":payload.message }
                                 </p>}
                             </>
@@ -91,7 +95,11 @@ export default function Homepage() {
                     <button className="btn btn-light sendBtn" type="submit">
                         Send
                     </button>
-                </form>
+            </form>
+             
+                
+
+                
             </header>
         </div>
     );
