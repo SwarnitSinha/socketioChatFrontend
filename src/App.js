@@ -1,7 +1,7 @@
 import './App.css';
 
-import Homepage from "./components/Homepage";
-import Register from "./components/Register";
+import Homepage from "./pages/Homepage";
+
 import {BrowserRouter, Routes, Route,Navigate} from "react-router-dom"
 
 

@@ -1,4 +1,4 @@
-import "../components/Homepage.css";
+import "./Homepage.css";
 import React, { useState, useEffect } from "react";
 import io from "socket.io-client";
 import Register from "./Register";
@@ -22,12 +22,12 @@ export default function Homepage() {
 
     useEffect(() => {
         socket.on("chat", (payload) => {
-            updateScroll();
             setChat([...chat, payload]);
+            chat.scrollTop = chat.scrollHeight;
         });
 
         socket.on("user-joined", (payload) => {
-            console.log(JSON.stringify(payload.userName) + "has joined");
+            // console.log(JSON.stringify(payload.userName) + "has joined");
             setChat([...chat,{ message:`${payload.userName} has joined the chat`,username: payload.userName}]);
         });
     });
@@ -38,14 +38,10 @@ export default function Homepage() {
             setUser(myUser);
             //emit joining message
         }
-        console.log(myUser);
+        // console.log(myUser);
     },[]);
 
-    function updateScroll(){
-        var element = document.getElementsByClassName(".container");
-        element.scrollTop = element.scrollHeight;
-    }
-
+    
     if (!user) {
         return <Register user={user} setUser={setUser} />;
     }
@@ -53,6 +49,7 @@ export default function Homepage() {
     return (
         <div className="App">
             <header className="App-header">
+                {/* <input type="checkbox">Sound</input> */}
                 <div className = "header">
                     <span>{user.toUpperCase()}</span>
                     <h1>Let's talk  </h1>
@@ -62,7 +59,7 @@ export default function Homepage() {
                 <div class="container">
                     {chat.map((payload, index) => {
                         let varibaleClass = "send";
-                        console.log(payload);
+                        // console.log(payload);
                         if (payload.user === user) { 
                             varibaleClass = "send";
                         } else {
@@ -90,12 +87,14 @@ export default function Homepage() {
                         value={message}
                         onChange={(e) => {
                             setMessage(e.target.value);
+                            
                         }}
+                        
                     />
                     <button className="btn btn-light sendBtn" type="submit">
                         Send
                     </button>
-            </form>
+                </form>
              
                 
 

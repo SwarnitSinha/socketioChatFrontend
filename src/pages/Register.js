@@ -37,12 +37,12 @@ function Register({user,setUser}) {
 			else{
 				alert(result.data.message);
 			}
-			console.log(result.data);
+			// console.log(result.data);
 		}
 		else{
 			if(!userName) return;
 			const result = await axios.post("https://randombatch.herokuapp.com/api/signUp",{username:userName,email,password})
-			console.log(result.data);
+			// console.log(result.data);
 			if(result.data.error){
 				alert(result.data.message);
 			}
