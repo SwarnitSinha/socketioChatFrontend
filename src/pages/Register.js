@@ -1,15 +1,8 @@
 import React from 'react'
 import {useState} from 'react';
-// import {Link} from 'react-router-dom';
 import './Register.css'
-// import io from "socket.io-client";
-// import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-// import firebase from '../firebase';
 
-
-
-// const socket = io.connect("http://localhost:5000");
 
 function Register({user,setUser}) {
 
@@ -18,11 +11,9 @@ function Register({user,setUser}) {
 	const [password,setPassword] = useState("");
 	const [login,setLogin] = useState(true);
 
-    // const Navigate = useNavigate();
 
 	const logHandler = async(e)=>{
 		e.preventDefault();
-		// const email = email;
 		if(!email || !password) return;
 		if(login){
 			const result = await axios.post("https://randombatch.herokuapp.com/api/signIn",{email,password})

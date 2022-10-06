@@ -2,6 +2,7 @@ import "./Homepage.css";
 import React, { useState, useEffect } from "react";
 import io from "socket.io-client";
 import Register from "./Register";
+import axios from "axios";
 // import {nanoid} from "nanoid";
 
 const socket = io.connect("https://randombatch.herokuapp.com");
@@ -31,12 +32,26 @@ export default function Homepage() {
             setChat([...chat,{ message:`${payload.userName} has joined the chat`,username: payload.userName}]);
         });
     });
-
+    const verifyToken =  async (token)=>{
+        try{
+            const result = await axios.post("http://localhost:5000/api/verifyToken",{token:token});
+            // setUser(result.username)
+            const user = result.data.user.username;
+            setUser(user);
+            console.log(result)
+            console.log(result.user);
+        }
+        catch(e){
+            console.log("error")
+        }
+    }
     useEffect(() => {
-        const myUser = JSON.parse(sessionStorage.getItem("Username"));
-        if (myUser) {
-            setUser(myUser);
-            //emit joining message
+        const token = JSON.parse(localStorage.getItem("Token"));
+        console.log(token)
+        if (token) {
+            //send api to backend to check the validity of token
+            verifyToken(token);
+
         }
         // console.log(myUser);
     },[]);
