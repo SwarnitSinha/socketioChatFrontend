@@ -13,13 +13,6 @@ export default function Homepage() {
     const [message, setMessage] = useState("");
     const [chat, setChat] = useState([]); //we will put value to the array
 
-    
-    const sendChat = (e) => {
-        e.preventDefault();
-        socket.emit("chat", { message, user});
-        // console.log("here ff");f
-        setMessage("");
-    };
 
     useEffect(() => {
         socket.on("chat", (payload) => {
@@ -32,6 +25,25 @@ export default function Homepage() {
             setChat([...chat,{ message:`${payload.userName} has joined the chat`,username: payload.userName}]);
         });
     });
+    
+    useEffect(() => {
+        const token = JSON.parse(localStorage.getItem("Token"));
+        console.log(token)
+        if (token) {
+            //send api to backend to check the validity of token
+            verifyToken(token);
+
+        }
+        // console.log(myUser);
+    },[]);
+
+    const sendChat = (e) => {
+        e.preventDefault();
+        socket.emit("chat", { message, user});
+        // console.log("here ff");f
+        setMessage("");
+    };
+
     const verifyToken =  async (token)=>{
         try{
             const result = await axios.post("http://localhost:5000/api/verifyToken",{token:token});
@@ -45,18 +57,12 @@ export default function Homepage() {
             console.log("error")
         }
     }
-    useEffect(() => {
-        const token = JSON.parse(localStorage.getItem("Token"));
-        console.log(token)
-        if (token) {
-            //send api to backend to check the validity of token
-            verifyToken(token);
 
-        }
-        // console.log(myUser);
-    },[]);
-
-    
+    const logoutHandler = ()=>{
+        // clear localStorage
+        localStorage.removeItem('Token');
+        setUser(null);
+    }
     if (!user) {
         return <Register user={user} setUser={setUser} />;
     }
@@ -70,7 +76,7 @@ export default function Homepage() {
                     <h1>Let's talk  </h1>
 
                 </div>
-        
+                <button type="button" onClick={logoutHandler} class="btn btn-light logoutBtn">Logout</button>
                 <div class="container">
                     {chat.map((payload, index) => {
                         let varibaleClass = "send";
