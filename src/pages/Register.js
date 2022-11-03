@@ -47,7 +47,8 @@ function Register({user,setUser}) {
   return (
 
     <div className='registerContainer'>
-		<h1>{login?"Login":"SignUp"}</h1>
+		<h1 className='page-heading'>Let's Talk</h1>
+		<h1 className='login-heading'>{login?"Login":"SignUp"}</h1>
 		<div className='nameForm'>
 			{!login && <input
 				type="text"

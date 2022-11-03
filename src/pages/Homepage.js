@@ -3,15 +3,14 @@ import React, { useState, useEffect } from "react";
 import io from "socket.io-client";
 import Register from "./Register";
 import axios from "axios";
-// import {nanoid} from "nanoid";
 
 const socket = io.connect("https://randombatch.herokuapp.com");
-// const userName = nanoid(4);
+//FRONTEND
 
 export default function Homepage() {
     const [user, setUser] = useState(null);
     const [message, setMessage] = useState("");
-    const [chat, setChat] = useState([]); //we will put value to the array
+    const [chat, setChat] = useState([]);
 
 
     useEffect(() => {
