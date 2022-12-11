@@ -16,7 +16,7 @@ function Register({user,setUser}) {
 		e.preventDefault();
 		if(!email || !password) return;
 		if(login){
-			const result = await axios.post("https://randombatch.herokuapp.com/api/signIn",{email,password})
+			const result = await axios.post("https://socketio-chat-backend.vercel.app/api/signIn",{email,password})
 			if(!result.data.error){
 
 				const token = result.data.token;
@@ -32,7 +32,7 @@ function Register({user,setUser}) {
 		}
 		else{
 			if(!userName) return;
-			const result = await axios.post("https://randombatch.herokuapp.com/api/signUp",{username:userName,email,password})
+			const result = await axios.post("https://socketio-chat-backend.vercel.app/api/signUp",{username:userName,email,password})
 			// console.log(result.data);
 			if(result.data.error){
 				alert(result.data.message);

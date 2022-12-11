@@ -4,7 +4,7 @@ import io from "socket.io-client";
 import Register from "./Register";
 import axios from "axios";
 
-const socket = io.connect("https://randombatch.herokuapp.com");
+const socket = io.connect("https://socketio-chat-backend.vercel.app/");
 //FRONTEND
 
 export default function Homepage() {
