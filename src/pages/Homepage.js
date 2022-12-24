@@ -4,7 +4,10 @@ import io from "socket.io-client";
 import Register from "./Register";
 import axios from "axios";
 
-const socket = io.connect("https://socketio-chat-backend.vercel.app/");
+// https://socketio-chat-backend.vercel.app/
+// const uri = "http://localhost:5000"
+const uri = "https://chatgroup.onrender.com"
+const socket = io.connect(uri);
 //FRONTEND
 
 export default function Homepage() {
@@ -15,6 +18,7 @@ export default function Homepage() {
 
     useEffect(() => {
         socket.on("chat", (payload) => {
+            console.log("chat is coming",payload);
             setChat([...chat, payload]);
             chat.scrollTop = chat.scrollHeight;
         });
@@ -45,7 +49,7 @@ export default function Homepage() {
 
     const verifyToken =  async (token)=>{
         try{
-            const result = await axios.post("http://localhost:5000/api/verifyToken",{token:token});
+            const result = await axios.post(uri+"/api/verifyToken",{token:token});
             // setUser(result.username)
             const user = result.data.user.username;
             setUser(user);
@@ -107,7 +111,6 @@ export default function Homepage() {
                         value={message}
                         onChange={(e) => {
                             setMessage(e.target.value);
-                            
                         }}
                         
                     />
